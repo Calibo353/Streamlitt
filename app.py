@@ -548,3 +548,33 @@ st.divider()
 st.caption(
     "Built with Streamlit, pandas, Matplotlib and scikit-learn."
 )
+
+# --------------------------------------------------
+# NEW FEATURE: HOUSE PRICE RANGE ESTIMATOR
+# --------------------------------------------------
+
+prediction_margin = rmse
+
+lower_price = max(0, predicted_price - prediction_margin)
+upper_price = predicted_price + prediction_margin
+
+st.markdown("### 🏡 Estimated House Price Range")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.metric(
+        "Estimated Lower Price",
+        f"₹ {lower_price:.2f} Lakhs"
+    )
+
+with col2:
+    st.metric(
+        "Estimated Upper Price",
+        f"₹ {upper_price:.2f} Lakhs"
+    )
+
+st.caption(
+    "This illustrative range uses the model's RMSE as a simple "
+    "margin, not a statistically validated prediction interval."
+)
